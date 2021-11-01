@@ -13,6 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function ($data) {
+    return view('welcome', ['data' => $data]); // passes data to the resource file
+});
+
+Route::get('/home', function () {
+    return "This is the home page";
+});
+
+Route::get('/secondPage', function () {
+    return "This is the second page";
+});
+
+Route::redirect('/secondPage', '/home', 301);
+
+
+Route::get('/user/{name?}', function ($id = null) {
+    return "This is the user page: ".$id;
+});
+
+Route::get('/user/{name}/comment/{commentid}', function ($id = null, $commentid) {
+    return "This is the user page: ".$id." comment  id ". $commentid ;
 });
