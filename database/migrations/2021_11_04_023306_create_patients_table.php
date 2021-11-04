@@ -17,11 +17,11 @@ class CreatePatientsTable extends Migration
             $table->id();
             $table->string('firstName');
             $table->string('lastName');
-            $table->string('phone_number');
+            $table->string('phoneNumber');
             $table->string('address');
+            $table->string('symptom');
+            $table->string('insurenceNumber');
             $table->dateTime('date_of_birth')->nullable();
-            $table->string('Symptom');
-            $table->string('Insurence_number');
             $table->timestamps();
         });
     }
