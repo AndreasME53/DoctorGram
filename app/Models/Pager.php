@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Specialization extends Model
+class Pager extends Model
 {
     use HasFactory;
 
     public function doctor(){
-        return $this->belongsTo(Doctor::class);             //php to connect one to one
+        return $this->hasMany(Doctor::class);             //php to connect one to many
     }
 }

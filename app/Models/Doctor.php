@@ -13,12 +13,12 @@ class Doctor extends Model
         return $this->belongsTo(Hospital::class);          // php connect one to many
     }
 
-    public function specialization(){
-        return $this->hasOne(Specialization::class);          // php connect one to one
-    }
-
     public function patients(){
         return $this->belongsToMany(Patient::class);         // php connect many to many
+    }
+
+    public function pager(){
+        return $this->hasOne(Pager::class);          // php connect one to one
     }
 
 }

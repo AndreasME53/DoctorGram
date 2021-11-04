@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSpecializationsTable extends Migration
+class CreatePagersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateSpecializationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('specializations', function (Blueprint $table) {
+        Schema::create('pagers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
+            $table->string('phone_number');
             $table->bigInteger('doctor_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('doctor_id')->references('id')->on('doctors')
-                ->onDelete('cascade')->ouUpdate('cascade');                     // sql to connect tabbles one to one
+            ->onDelete('cascade')->ouUpdate('cascade');                     // sql to connect tabbles one to one
         });
     }
 
@@ -32,6 +31,6 @@ class CreateSpecializationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('specializations');
+        Schema::dropIfExists('pagers');
     }
 }
