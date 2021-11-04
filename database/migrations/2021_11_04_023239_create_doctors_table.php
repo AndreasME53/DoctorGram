@@ -17,6 +17,7 @@ class CreateDoctorsTable extends Migration
             $table->id();
             $table->string('firstName');
             $table->string('lastName');
+            $table->string('phone_number');
             $table->dateTime('address')->nullable();
             $table->bigInteger('hospital_id')->unsigned();
             
