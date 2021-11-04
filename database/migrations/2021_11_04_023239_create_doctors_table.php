@@ -15,6 +15,14 @@ class CreateDoctorsTable extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
+            $table->string('firstName');
+            $table->string('lastName');
+            $table->dateTime('address')->nullable();
+            $table->bigInteger('hospital_id')->unsigned();
+            
+            $table->foreign('hospital_id')->references('id')->on('hospitals')
+                 ->onDelete('cascade')->ouUpdate('cascade'); // sql connecting one to many
+
             $table->timestamps();
         });
     }

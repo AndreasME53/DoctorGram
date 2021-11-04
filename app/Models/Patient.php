@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Patient extends Model
 {
     use HasFactory;
+
+    public function doctors(){
+        return $this->belongsToMany(Doctor::class);             //php to connect many to many
+    }
 }
