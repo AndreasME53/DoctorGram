@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHospitalsTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,16 @@ class CreateHospitalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('hospitals', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('ward_name');
-            $table->string('hospital_name');
-            $table->string('address')->nullable();
             $table->timestamps();
+
+            $table->bigInteger('doctor_id')->unsigned();
+
+            $table->foreign('doctor_id')->references('id')->on('doctors')
+            ->onDelete('cascade')->ouUpdate('cascade'); // sql connecting many to many
+
+
         });
     }
 
@@ -29,6 +33,6 @@ class CreateHospitalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hospitals');
+        Schema::dropIfExists('posts');
     }
 }

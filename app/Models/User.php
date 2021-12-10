@@ -41,4 +41,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function doctors(){
+        return $this->hasOne(Doctor::class);             //php to connect many to many
+    }
+
 }

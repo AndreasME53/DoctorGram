@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Hospital extends Model
+class Comment extends Model
 {
     use HasFactory;
 
-    public function doctor(){
-        return $this->hasMany(Doctor::class);             //php to connect one to many
+    public function comments(){
+        return $this->belongsTo(Post::class);             //php to connect one to many
     }
 }
