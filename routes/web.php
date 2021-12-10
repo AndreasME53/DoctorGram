@@ -18,6 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/main/{doctor?}', function($doctor = null) {
+    return view('main', ['doctor' => $doctor]);
+});
+
+
 Route::get('post-form', [PostController::class, 'index']);
 Route::post('store-form', [PostController::class, 'store']);
 
