@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,32 +13,12 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function ($data) {
-    return view('welcome', ['data' => $data]); // passes data to the resource file
-});
-
-Route::get('/home', function () {
-    return "This is the home page";
-});
-
-Route::get('/secondPage', function () {
-    return "This is the second page";
-});
-
-Route::redirect('/secondPage', '/home', 301);
-
-
-Route::get('/user/{name?}', function ($id = null) {
-    return "This is the user page: ".$id;
-});
-
-Route::get('/user/{name}/comment/{commentid}', function ($id = null, $commentid) {
-    return "This is the user page: ".$id." comment  id ". $commentid ;
-});
-
-
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('add-blog-post-form', [PostController::class, 'index']);
-Route::post('store-form', [PostController::class, 'store']);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';

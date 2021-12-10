@@ -14,7 +14,7 @@
   @endif
   <div class="card">
     <div class="card-header text-center font-weight-bold">
-      Laravel 8 - Add Blog Post Form Example
+       Form Example Test
     </div>
     <div class="card-body">
       <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{url('store-form')}}">
