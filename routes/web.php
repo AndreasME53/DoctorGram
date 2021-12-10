@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,10 @@ Route::get('/user/{name?}', function ($id = null) {
 Route::get('/user/{name}/comment/{commentid}', function ($id = null, $commentid) {
     return "This is the user page: ".$id." comment  id ". $commentid ;
 });
+
+
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('add-blog-post-form', [PostController::class, 'index']);
+Route::post('store-form', [PostController::class, 'store']);
