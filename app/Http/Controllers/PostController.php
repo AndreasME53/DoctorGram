@@ -10,7 +10,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        return view('add-blog-post-form');
+        return view('post-form');
     }
     public function store(Request $request)
     {
@@ -18,6 +18,6 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->description = $request->description;
         $post->save();
-        return redirect('add-blog-post-form')->with('status', 'Blog Post Form Data Has Been inserted');
+        return redirect('post-form')->with('status', 'Blog Post Form Data Has Been inserted');
     }
 }

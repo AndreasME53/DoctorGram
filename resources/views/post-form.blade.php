@@ -17,7 +17,7 @@
        Form Example Test
     </div>
     <div class="card-body">
-      <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{url('store-form')}}">
+      <form name="post-form" id="post-form" method="post" action="{{url('store-form')}}">
        @csrf
         <div class="form-group">
           <label for="exampleInputEmail1">Title</label>
