@@ -2,17 +2,12 @@
 
 
 @section('title')
-
         Dr. '{{$user ?? 'login in user'}}'
-
 @endsection
 
 
 @section('heading')
-
 Selected post - Dr. {{$doctor}}
-
-
 @endsection
 
 

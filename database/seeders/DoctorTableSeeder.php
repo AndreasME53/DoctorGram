@@ -19,6 +19,10 @@ class DoctorTableSeeder extends Seeder
         $d->firstName = "Leo";
         $d->lastName = "John";
         $d->phoneNumber = "0000 - 0000";
+        $d->hospital_name = "Barnet Hospital";
+        $d->hospital_address = "Wellhouse Lane, Chipping Barnet EN5 3DJ, London, England";
+        $d->field = "Internists";
+
         $d->save();
 
         // how the doctors factory is called

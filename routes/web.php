@@ -6,8 +6,11 @@ use App\Http\Controllers\DoctorController;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Web Routes  
 |--------------------------------------------------------------------------
+|A  homepage (index.posts)
+|3 show  pages for posts(show), patents(show), doctors(show)
+|3 forms pages for doctor(create{register}/update), patents(create/update), posts(create/edit)  
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
@@ -22,25 +25,34 @@ Route::get('/', function () {
 
 //homepage
 Route::get('home', [PostController::class, 'index']);
-//view post
-Route::get('home/case/{id}', [PostController::class, 'show']);
-    ->name('doctors.show');
 
-//create and send forms
+//view post
+Route::get('home/case/{id}', [PostController::class, 'show'])
+    ->name('post.show');
+
+//edit, create and send forms/posts
 Route::get('post-form', [PostController::class, 'create']);
 Route::post('store-form', [PostController::class, 'store']);
+//Route::get('home/case/{id}', [PostController::class, 'edit'])
 
-
-Route::get('doctors', [DoctorController::class, 'index']); // lect 12
+//view doctor
 Route::get('doctors/{id}', [DoctorController::class, 'show'])
     ->name('doctors.show');
 
+//view patient
+Route::get('patients/{id}', [PatentController::class, 'show'])
+    ->name('patients.show');
 
 
+//edit, register and add form doctor
+//Route::get('doctors/{id}', [DoctorController::class, 'edit'])
 
-Route::get('doctors/{id}/patents', [PatentController::class, 'index']);
-Route::get('doctors/{id}/patents/{id}', [PatentController::class, 'show'])
-    ->name('patents.show');
+//edit, create and add form patient
+Route::get('patient-form', [PatentController::class, 'create']);
+Route::post('store-form', [PatentController::class, 'store']);
+//Route::get('patients/{id}', [PatentController::class, 'edit'])
+
+
 
 
 
@@ -49,9 +61,3 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
-
-
-
-Route::get('/main/{doctor?}', function($doctor = null) {
-    return view('main', ['doctor' => $doctor]);
-});

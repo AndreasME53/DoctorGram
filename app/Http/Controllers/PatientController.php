@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Post;
-
-class PostController extends Controller
+class PatientController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -16,10 +13,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //return
-        $posts = Post::all();
-        return view('posts.index', ['posts' => $posts]);
-
+        //
     }
 
     /**
@@ -30,7 +24,6 @@ class PostController extends Controller
     public function create()
     {
         //
-        return view('posts.create');
     }
 
     /**
@@ -42,11 +35,6 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
-        //$post = new Post;
-        //$post->title = $request->title;
-        //$post->description = $request->description;
-        //$post->save();
-        return redirect('post-form')->with('status', 'Blog Post Form Data Has Been inserted');
     }
 
     /**
@@ -57,8 +45,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post =  Post::findOrFail($id);// if exist or 404
-        return view('post.show', ['post' => $post]);
+        //
     }
 
     /**

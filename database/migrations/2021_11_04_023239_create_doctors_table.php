@@ -18,10 +18,10 @@ class CreateDoctorsTable extends Migration
             $table->string('firstName');
             $table->string('lastName');
             $table->string('phoneNumber');
-            $table->string('address')->nullable();
-            $table->string('ward_name')->nullable();
             $table->string('hospital_name')->nullable();
             $table->string('hospital_address')->nullable();
+            $table->text('field')->nullable();
+
 
            // $table->bigInteger('user_id')->unsigned();
             
