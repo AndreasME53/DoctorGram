@@ -22,4 +22,8 @@ class Doctor extends Model
         return $this->hasMany(Post::class);             //php to connect one to many
     }
 
+    public function comments(){
+        return $this->hasMany(Comment::class);             //php to connect one to many
+    }
+
 }

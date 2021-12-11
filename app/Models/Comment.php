@@ -12,4 +12,8 @@ class Comment extends Model
     public function comments(){
         return $this->belongsTo(Post::class);             //php to connect one to many
     }
+
+    public function doctors(){
+        return $this->belongsTo(Doctor::class);             //php to connect one to many
+    }
 }

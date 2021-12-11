@@ -15,6 +15,7 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->text('description');
             $table->timestamps();
 
 
@@ -23,7 +24,10 @@ class CreateCommentsTable extends Migration
             $table->foreign('post_id')->references('id')->on('posts')
             ->onDelete('cascade')->ouUpdate('cascade'); // sql connecting many to many
 
+            $table->bigInteger('doctor_id')->unsigned();
 
+            $table->foreign('doctor_id')->references('id')->on('doctors')
+            ->onDelete('cascade')->ouUpdate('cascade'); // sql connecting many to many
 
         });
     }
