@@ -10,7 +10,7 @@
         <title> DoctorGram - @yield('title')</title>
     </head>
     <body>
-        <h1> Selected post - @yield('heading')</h1>
+        <h1> @yield('heading')</h1>
 
         <div >
            @yield('content')

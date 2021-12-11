@@ -8,7 +8,7 @@ class DoctorFactory extends Factory
 {
     /**
      * Define the model's default state.
-     *
+     * 'hospital_id' => $this->faker->numberBetween($min = 1, $max = 5),
      * @return array
      */
     public function definition()
@@ -18,7 +18,7 @@ class DoctorFactory extends Factory
             'lastName' => $this->faker->lastName(),
             'phoneNumber' => $this->faker->phoneNumber(),
             'address' => $this->faker->address(),
-            'hospital_id' => $this->faker->numberBetween($min = 1, $max = 5),
+           
         ];
     }
 }

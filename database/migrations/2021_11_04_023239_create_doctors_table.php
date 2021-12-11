@@ -19,15 +19,15 @@ class CreateDoctorsTable extends Migration
             $table->string('lastName');
             $table->string('phoneNumber');
             $table->string('address')->nullable();
-            $table->string('ward_name');
-            $table->string('hospital_name');
+            $table->string('ward_name')->nullable();
+            $table->string('hospital_name')->nullable();
             $table->string('hospital_address')->nullable();
 
-            $table->bigInteger('user_id')->unsigned();
+           // $table->bigInteger('user_id')->unsigned();
             
             
-            $table->foreign('user_id')->references('id')->on('users')
-                 ->onDelete('cascade')->ouUpdate('cascade'); // sql connecting one to many
+          //  $table->foreign('user_id')->references('id')->on('users')
+             //    ->onDelete('cascade')->ouUpdate('cascade'); // sql connecting one to many
             
             
             $table->timestamps();

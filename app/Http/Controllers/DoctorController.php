@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Post;
+use App\Models\Doctor;
 
-class PostController extends Controller
+class DoctorController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +16,8 @@ class PostController extends Controller
     public function index()
     {
         //
-        return view('post-form');
+        $doctors = Doctor::all();
+        return view('doctors.index', ['doctors' => $doctors]);
     }
 
     /**
@@ -39,11 +39,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
-        $post = new Post;
-        $post->title = $request->title;
-        $post->description = $request->description;
-        $post->save();
-        return redirect('post-form')->with('status', 'Blog Post Form Data Has Been inserted');
+
     }
 
     /**
@@ -55,6 +51,8 @@ class PostController extends Controller
     public function show($id)
     {
         //
+        $doctor =  Doctor::findOrFail($id);// if exist or 404
+        return view('doctors.show', ['doctor' => $doctor]);
     }
 
     /**

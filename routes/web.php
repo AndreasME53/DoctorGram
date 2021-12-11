@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\DoctorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,8 @@ Route::get('/main/{doctor?}', function($doctor = null) {
     return view('main', ['doctor' => $doctor]);
 });
 
+Route::get('doctors', [DoctorController::class, 'index']);
+Route::get('doctors/{id}', [DoctorController::class, 'show']);
 
 Route::get('post-form', [PostController::class, 'index']);
 Route::post('store-form', [PostController::class, 'store']);

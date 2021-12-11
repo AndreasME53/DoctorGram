@@ -10,7 +10,7 @@
 
 @section('heading')
 
-        Dr. {{$doctor}}
+Selected post - Dr. {{$doctor}}
 
 
 @endsection

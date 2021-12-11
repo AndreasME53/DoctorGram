@@ -9,7 +9,7 @@ class DoctorTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
+     *        $d->hospital_id = 1;
      * @return void
      */
     public function run()
@@ -19,7 +19,6 @@ class DoctorTableSeeder extends Seeder
         $d->firstName = "Leo";
         $d->lastName = "John";
         $d->phoneNumber = "0000 - 0000";
-        $d->hospital_id = 1;
         $d->save();
 
         // how the doctors factory is called
