@@ -52,6 +52,7 @@ class DoctorController extends Controller
     {
         //
         $doctor =  Doctor::findOrFail($id);// if exist or 404
+        //dump($doctor);   for debugging
         return view('doctors.show', ['doctor' => $doctor]);
     }
 

@@ -23,7 +23,7 @@
    <p>The are Doctors:</p>
     <ol>
         @foreach ($doctors as $doctor)
-                <li>Dr. {{ $doctor->firstName . " " . $doctor->lastName}}</li>
+                <li><a href="{{ route('doctors.show', ['id' => $doctor->id ]) }}">Dr. {{ $doctor->firstName . " " . $doctor->lastName}}</li>
         @endforeach
     </ol>
 

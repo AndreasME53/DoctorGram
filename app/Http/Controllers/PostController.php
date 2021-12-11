@@ -16,8 +16,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
-        return view('post-form');
+        //return
+        $posts = Post::all();
+        return view('posts.index', ['posts' => $posts]);
+
     }
 
     /**
@@ -28,6 +30,7 @@ class PostController extends Controller
     public function create()
     {
         //
+        return view('posts.create');
     }
 
     /**
@@ -39,10 +42,10 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
-        $post = new Post;
-        $post->title = $request->title;
-        $post->description = $request->description;
-        $post->save();
+        //$post = new Post;
+        //$post->title = $request->title;
+        //$post->description = $request->description;
+        //$post->save();
         return redirect('post-form')->with('status', 'Blog Post Form Data Has Been inserted');
     }
 
@@ -54,7 +57,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

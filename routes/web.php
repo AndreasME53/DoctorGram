@@ -17,20 +17,41 @@ use App\Http\Controllers\DoctorController;
 
 Route::get('/', function () {
     return view('welcome');
+    //need my own welcome page 
 });
 
-Route::get('/main/{doctor?}', function($doctor = null) {
-    return view('main', ['doctor' => $doctor]);
-});
+//homepage
+Route::get('home', [PostController::class, 'index']);
+//view post
+Route::get('home/case/{id}', [PostController::class, 'show']);
+    ->name('doctors.show');
 
-Route::get('doctors', [DoctorController::class, 'index']);
-Route::get('doctors/{id}', [DoctorController::class, 'show']);
-
-Route::get('post-form', [PostController::class, 'index']);
+//create and send forms
+Route::get('post-form', [PostController::class, 'create']);
 Route::post('store-form', [PostController::class, 'store']);
+
+
+Route::get('doctors', [DoctorController::class, 'index']); // lect 12
+Route::get('doctors/{id}', [DoctorController::class, 'show'])
+    ->name('doctors.show');
+
+
+
+
+Route::get('doctors/{id}/patents', [PatentController::class, 'index']);
+Route::get('doctors/{id}/patents/{id}', [PatentController::class, 'show'])
+    ->name('patents.show');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+
+
+Route::get('/main/{doctor?}', function($doctor = null) {
+    return view('main', ['doctor' => $doctor]);
+});
