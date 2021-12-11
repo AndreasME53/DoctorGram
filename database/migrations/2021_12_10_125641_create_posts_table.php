@@ -14,17 +14,16 @@ class CreatePostsTable extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('title');
             $table->text('description');
+            $table->binary('photo')->nullable();
             $table->timestamps();
 
             $table->bigInteger('doctor_id')->unsigned();
 
             $table->foreign('doctor_id')->references('id')->on('doctors')
             ->onDelete('cascade')->ouUpdate('cascade'); // sql connecting many to many
-
-
         });
     }
 

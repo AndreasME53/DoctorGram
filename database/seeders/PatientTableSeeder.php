@@ -44,5 +44,6 @@ class PatientTableSeeder extends Seeder
         // fatory adding randomn patients
         $patient = Patient::factory()->count(10)->create();
         
+        
     }
 }

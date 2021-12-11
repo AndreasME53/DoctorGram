@@ -18,12 +18,9 @@ class DoctorFactory extends Factory
             'lastName' => $this->faker->lastName(),
             'phoneNumber' => $this->faker->phoneNumber(),
             'hospital_name' => $this->faker->randomElement(["St Thomas' Hospital", "The London Clinic", "Whittington Hospital", "St Mary's Hospital", 'Allied Health Services', 'Care Medical Clinic', ' Community Health Service']),
-            'hospital_address' => $this->faker->address(),
+            'hospital_address'=> $this->faker->address(),
             'field' => $this->faker->randomElement(['Family physicians', 'Cardiologists', 'Pediatricians', 'Anesthesiologists', 'Radiologists ', 'Internists', 'Neurologists ', 'Emergency physicians','Psychiatrists']),
            
         ];
     }
 }
-
-
-'address' => $this->faker->address(),
