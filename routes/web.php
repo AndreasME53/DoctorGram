@@ -24,7 +24,8 @@ Route::get('/', function () {
 });
 
 //homepage
-Route::get('home', [PostController::class, 'index']);
+Route::get('home', [PostController::class, 'index'])
+    ->name('posts.index');
 
 //view post
 Route::get('home/case/{id}', [PostController::class, 'show'])

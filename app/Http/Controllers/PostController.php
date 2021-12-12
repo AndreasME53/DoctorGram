@@ -58,7 +58,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post =  Post::findOrFail($id);// if exist or 404
-        return view('post.show', ['post' => $post]);
+        return view('posts.show', ['post' => $post]);
     }
 
     /**

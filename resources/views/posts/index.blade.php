@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app1')
 
 @section('title')
         Dr. '{{$user ?? 'login in user'}}'
@@ -6,20 +6,40 @@
 
 @section('content')
 
-    @foreach ($posts as $post)
+
+
+  
+@foreach ($posts as $post)
+
+<div class="card shodow-ld">
+    <div>
         
-        <div class="postContent"><a href="{{ route('post.show', ['id' => $post->id ]) }}">
-            <div>
-                <img class="postLogoPic" src="/img/apple.png">
-            </div>
-            <div class="postUsername">{{ App\Models\Doctor::find($post->post_author)->name }} </div>
-            <div class="postDate">{{ $post->created_at }}</div>
-            <h3 style="clear: left; margin-left: 5px;">{{ App\Models\Doctor::find($post->post_content) }}</h3>
+        <img class="postLogoPic" src="/img/medic.png">
+    </div>
+    <div class="postUsername:"><h3>
+        Dr.{{ App\Models\Doctor::find($post->doctor_id)->lastName }} {{ App\Models\Doctor::find($post->doctor_id)->firstName }} </h3>
+    </div>
 
-    
-            <p style="margin-left: 5px;">{{ $post->post_content }}</p>
-    
+    <div><h5>{{$post->title }}</h5></div>
 
-        </div>
-    @endforeach
+{{--
+    <p style="margin-left: 5px;">{{ $post->description }}</p>--}}
+
+
+</div>
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="btn-group">
+      <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{ route('post.show', ['id' => $post->id ]) }}">View</a></button>
+      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+    </div>
+    <small class="text-muted">{{ $post->created_at }}</small>
+  </div>
+@endforeach
 @endsection
+
+{{--
+<div><a href="{{ route('post.show', ['id' => $post->id ]) }}">
+    {{ App\Models\Doctor::find($post->doctor_id)->lastName }} 
+</div>
+--}}
+
