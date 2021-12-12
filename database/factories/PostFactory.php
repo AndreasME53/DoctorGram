@@ -18,6 +18,7 @@ class PostFactory extends Factory
             'description' => $this->faker->realText($maxNbChars = 2000, $indexSize = 2),
            // 'photo' => $this->faker->image('public/storage/images',400,300),    need to get the factory to do this
             'doctor_id' => $this->faker->numberBetween($min = 1, $max = 10), // need to find a better way for this 
+// for later if time            //'patient_id' => $this->faker->numberBetween($min = 1, $max = 10), // need to find a better way for this 
         ];
     }
 }

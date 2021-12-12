@@ -21,6 +21,7 @@
 
             <li class="nav-item col-end text-end"><div class="d-flex justify-content-between align-items-center">
                 <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{ route('doctor.show', ['id' => $post->doctor_id ]) }}">View doctors detail's</a></button></li>
+                <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{ route('posts.index') }}">Back</a></button></li>
         </ul>
     </div>
     
@@ -37,12 +38,6 @@
     @endif
 
     <p style="margin-left: 5px;">{{ $post->description }}</p>
-
-    <div class="d-flex justify-content-between align-items-center">
-        <div class=" btn-group">
-          <button type="button" class="  btn btn-sm btn-outline-secondary"><a href="{{ route('post.show', ['id' => $post->id ]) }}">View patient detail's</a></button>
-        </div>
-
 
 </div>
 

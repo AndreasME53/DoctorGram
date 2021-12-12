@@ -9,8 +9,16 @@
 
 @section('content')
 
+<div class="container"> 
+    <ul class="card-header nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li class = "col"> <h1 class="text-center font-weight-bold"> Dr. {{$doctor->lastName . " " . $doctor->firstName}} Details</h1> </li>
 
-    <h1 class="card-header text-center font-weight-bold"> Dr. {{$doctor->lastName . " " . $doctor->firstName}} Details</h1>
+        <li class="nav-item col-end text-end"><div class="d-flex justify-content-between align-items-center">
+            <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{ url()->previous() }}">Back to post</a></button></li>
+    </ul>
+</div>
+
+    
 
     <ul>
         <li>Name: {{$doctor->firstName}}</li>

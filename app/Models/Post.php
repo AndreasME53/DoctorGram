@@ -17,4 +17,9 @@ class Post extends Model
         return $this->hasMany(Comment::class);             //php to connect one to many
     }
 
+/* for later if time
+    public function patients(){
+        return $this->belongsTo(Doctor::class);             //php to connect one to many
+    }*/
+
 }

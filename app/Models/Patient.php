@@ -12,4 +12,8 @@ class Patient extends Model
     public function doctors(){
         return $this->belongsToMany(Doctor::class);             //php to connect many to many
     }
+/* for later if time
+    public function posts(){
+        return $this->hasMany(Post::class);             //php to connect one to one
+    }*/
 }

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Patient;
+use App\Models\Doctor;
 use Illuminate\Database\Seeder;
 
 class PatientTableSeeder extends Seeder
@@ -44,6 +45,14 @@ class PatientTableSeeder extends Seeder
         // fatory adding randomn patients
         $patient = Patient::factory()->count(10)->create();
         
-        
+        // Get all the roles attaching up to 3 random roles to each user
+//$patients = Patient::all();
+
+// Populate the pivot table
+//Doctor::all()->each(function ($doctor) use ($patients) { 
+  //  $doctor->patients()->attach(
+ //       $patients->random(rand(1, 10))->pluck('id')->toArray()
+ //   ); 
+//});
     }
 }

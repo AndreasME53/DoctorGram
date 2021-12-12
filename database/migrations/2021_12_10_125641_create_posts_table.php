@@ -24,6 +24,11 @@ class CreatePostsTable extends Migration
 
             $table->foreign('doctor_id')->references('id')->on('doctors')
             ->onDelete('cascade')->ouUpdate('cascade'); // sql connecting many to many
+//for later if time
+         //   $table->bigInteger('patient_id')->unsigned();
+
+           // $table->foreign('patient_id')->references('id')->on('patients')
+          //  ->onDelete('cascade')->ouUpdate('cascade'); // sql connecting many to many
         });
     }
 
