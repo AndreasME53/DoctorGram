@@ -42,11 +42,21 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
-        //$post = new Post;
-        //$post->title = $request->title;
-        //$post->description = $request->description;
-        //$post->save();
-        return redirect('post-form')->with('status', 'Blog Post Form Data Has Been inserted');
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required|max:255',
+            'photo' => 'nullable|binary',
+        ]
+    );
+
+
+        $post = new Post;
+        $post->title = $request-> $validatedData['title'];
+        $post->description = $request-> $validatedData['description'];
+        $post->photo = $request->$validatedData['photo'];
+        $a->doctor_id = Auth::id(); 
+        $post->save();
+        return redirect('posts.create')->with('status', 'your case has been published');
     }
 
     /**
@@ -69,7 +79,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        return view('posts.edit', compact('id'));
     }
 
     /**
@@ -82,6 +93,21 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required|max:255',
+            'photo' => 'nullable|binary',
+        ]
+    );
+
+
+        $post = new Post;
+        $post->title = $request-> $validatedData['title'];
+        $post->description = $request-> $validatedData['description'];
+        $post->photo = $request->$validatedData['photo'];
+        $a->doctor_id = $id; 
+        $post->save();
+        return redirect('posts.create')->with('status', 'your case has been published');
     }
 
     /**

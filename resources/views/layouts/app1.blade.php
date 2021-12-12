@@ -23,15 +23,15 @@
     
           <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li class="nav-item"><a href="{{ route('posts.index') }}" class="nav-link active" aria-current="page">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">+ New Post</a></li>
+            <li class="nav-item"><a href="{{ route('posts.create') }}" class="nav-link">+ New Post</a></li>
            <!--  <li class="nav-item"><a href="#" class="nav-link">Create New Patent</a></li>
             <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
             <li class="nav-item"><a href="#" class="nav-link">About</a></li>-->
           </ul>
     
           <div class="col-md-3 text-end">
-            <button type="button" class="btn btn-outline-primary me-2">Login</button>
-            <button type="button" class="btn btn-primary">Sign-up</button>
+            <a class="btn btn-outline-primary me-2" href="{{ route('login') }}" role="button">Login</a>
+            <a class="btn btn-primary" href="{{ route('register') }}" role="button">Register</a>
           </div>
         </header>
       </div>

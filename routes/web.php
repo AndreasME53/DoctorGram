@@ -32,9 +32,10 @@ Route::get('home/case/{id}', [PostController::class, 'show'])
     ->name('post.show');
 
 //edit, create and send forms/posts
-Route::get('post-form', [PostController::class, 'create']);
+Route::get('post-form', [PostController::class, 'create'])
+    ->name('posts.create');
 Route::post('store-form', [PostController::class, 'store']);
-//Route::get('home/case/{id}', [PostController::class, 'edit'])
+
 
 //view doctor
 Route::get('doctors/{id}', [DoctorController::class, 'show'])
@@ -58,7 +59,7 @@ Route::post('store-form', [PatentController::class, 'store']);
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect('post-form');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

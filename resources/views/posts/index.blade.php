@@ -6,7 +6,18 @@
 
 @section('content')
 
-
+<link href="/css/styles.css" rel="stylesheet">
+    @if (Auth::check())
+    <div class="addPost">
+        <h5>Send a post down below</h5>
+        <input class="form-control" type="text" placeholder="Default input">
+        <input type="button" id="sendBtn" placeholder="Add Post">
+    </div>
+    @else
+    <div class="card-header nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <h5>Log in or register to be able to send posts</h5>
+    </div>
+    @endif
 
   
 @foreach ($posts as $post)
@@ -29,8 +40,8 @@
 </div>
   <div class="d-flex justify-content-between align-items-center">
     <div class="btn-group">
-      <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{ route('post.show', ['id' => $post->id ]) }}">View</a></button>
-      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+      <a class="btn btn-sm btn-outline-primary" href="{{ route('post.show', ['id' => $post->id ]) }}" role="button">View</a>
+      <a class="btn btn-sm btn-outline-secondary" href="{{ route('posts.create', ['id' => $post->id ]) }}" role="button">Edit</a>
     </div>
     <small class="text-muted">{{ $post->created_at }}</small>
   </div>
