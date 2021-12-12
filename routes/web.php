@@ -38,7 +38,7 @@ Route::post('store-form', [PostController::class, 'store']);
 
 //view doctor
 Route::get('doctors/{id}', [DoctorController::class, 'show'])
-    ->name('doctors.show');
+    ->name('doctor.show');
 
 //view patient
 Route::get('patients/{id}', [PatentController::class, 'show'])
