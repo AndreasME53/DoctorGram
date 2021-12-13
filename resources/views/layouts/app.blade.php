@@ -24,8 +24,8 @@
           @if (Auth::check())
 
           <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li class="nav-item"><a href="{{ route('posts.index') }}" class="nav-link active" aria-current="page">Home</a></li>
-            <li class="nav-item"><a href="{{ route('posts.create') }}" class="nav-link">+ New Post</a></li>
+            <li class="nav-item"><a href="{{ url('/home') }}" class="nav-link active" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">account details</a></li>
           </ul>
 
           <div class="col-md-3 text-end">
@@ -38,7 +38,7 @@
           @else
 
           <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li class="nav-item"><a href="{{ route('posts.index') }}" class="nav-link active" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="{{ url('/home') }}" class="nav-link active" aria-current="page">Home</a></li>
           </ul>
     
           <div class="col-md-3 text-end">

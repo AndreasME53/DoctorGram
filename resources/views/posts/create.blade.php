@@ -27,7 +27,7 @@
     <div class="card-body">
 
 
-      <form name="post-form" id="post-form" method="POST" action="{{url('posts.store')}}">
+      <form name="post-form" id="post-form" method="POST" action="{{url('post.store')}}">
        @csrf
 
         <div class="form-group">

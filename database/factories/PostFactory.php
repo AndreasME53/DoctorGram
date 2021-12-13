@@ -14,7 +14,7 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->realText($maxNbChars = 20, $indexSize = 2),
+            'title' => $this->faker->realText($maxNbChars = 100, $indexSize = 2),
             'description' => $this->faker->realText($maxNbChars = 100, $indexSize = 2),
            // 'photo' => $this->faker->image('public/storage/images',400,300),    need to get the factory to do this
             'user_id' => $this->faker->numberBetween($min = 1, $max = 10), // need to find a better way for this 

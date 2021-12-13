@@ -1,20 +1,23 @@
 @extends('layouts.app')
 
 @section('title')
-        Dr. '{{$user ?? 'login in user'}}'
+        HomePage
 @endsection
 
 @section('content')
 
 <link href="/css/styles.css" rel="stylesheet">
     @if (Auth::check())
-    <div class="addPost">
-        <div class="card-header nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <h5>Below are the posts</h5>
+    <form action="{{ url('addpost') }}" method="POST">
+        @csrf
+        <div class="addPost">
+            <h5>Create a Case</h5>
+            <textarea class="form-control" name="body" rows="3" required></textarea>
+            <button type="submit" class="btn btn-primary btn-lg">Send</button>
         </div>
-    </div>
+    </form>
     @else
-    <div class="card-header nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+    <div class="addPost">
         <h5>Log in or register to be able to send posts</h5>
     </div>
     @endif
@@ -27,7 +30,7 @@
         <img class="postPicIndex" src="/img/medic.png">
     </div>
     <div class="postUsername:"><h3>
-        Dr.{{ App\Models\Doctor::find($post->doctor_id)->lastName }} {{ App\Models\Doctor::find($post->doctor_id)->firstName }} </h3>
+        Dr. {{ App\Models\User::find($post->user_id)->name }} </h3>
     </div>
 
     <div><h5>{{$post->title }}</h5></div>
@@ -39,8 +42,8 @@
 </div>
   <div class="d-flex justify-content-between align-items-center">
     <div class="btn-group">
-      <a class="btn btn-sm btn-outline-primary" href="{{ route('post.show', ['id' => $post->id ]) }}" role="button">View</a>
-      <a class="btn btn-sm btn-outline-secondary" href="{{ route('posts.create', ['id' => $post->id ]) }}" role="button">Edit</a>
+      <a class="btn btn-sm btn-outline-primary" href="/case/{{$post->id}}" role="button">View</a>
+      <a class="btn btn-sm btn-outline-secondary" href="#" role="button">Edit</a>
     </div>
     <small class="text-muted">{{ $post->created_at }}</small>
   </div>

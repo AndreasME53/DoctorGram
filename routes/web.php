@@ -18,52 +18,35 @@ use App\Http\Controllers\DoctorController;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
-    //need my own welcome page 
 });
 
-//homepage
-Route::get('/home', [PostController::class, 'index'])
-    ->name('posts.index');
+Route::get('/home', [PostController::class, 'index']);
 
-//view post
-Route::get('/home/case/{id}', [PostController::class, 'show'])
-    ->name('post.show');
+Route::get('/case/{id}', [PostController::class, 'show']);
 
-//edit, create and send forms/posts
-Route::get('/post/form', [PostController::class, 'create'])
-    ->name('posts.create');
-Route::post('/store', [PostController::class, 'store'])
-    ->name('posts.store');
+Route::get('/case/new', [PostController::class, 'create']);
+
+Route::post('/store', [PostController::class, 'store']);
 
 
 //view doctor
-Route::get('/doctors/{id}', [DoctorController::class, 'show'])
-    ->name('doctor.show');
+Route::get('/doctors/{id}', [DoctorController::class, 'show']);
 
 //view patient
-Route::get('/patients/{id}', [PatentController::class, 'show'])
-    ->name('patients.show');
+Route::get('/patients/{id}', [PatentController::class, 'show']);
 
 
 //edit, register and add form doctor
-Route::get('doctor/register', [DoctorController::class, 'create'])
-    ->name('doctors.create');
-Route::post('store', [DoctorController::class, 'store'])->name('doctors.store');
+Route::get('doctor/register', [DoctorController::class, 'create']);
+Route::post('store', [DoctorController::class, 'store']);
 //Route::get('doctors/{id}', [DoctorController::class, 'edit'])
 
-//edit, create and add form patient
-Route::get('patient-form', [PatentController::class, 'create']);
-Route::post('store-form', [PatentController::class, 'store']);
-//Route::get('patients/{id}', [PatentController::class, 'edit'])
 
-
-
-
-
-Route::get('/dashboard', function () {
-    return redirect('home');
+ Route::get('/dashboard', function () {
+     return redirect('home');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
