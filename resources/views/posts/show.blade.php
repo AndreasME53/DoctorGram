@@ -38,4 +38,17 @@
 
 </div>
 
+@foreach ($comments as $comment) 
+        <div class="commentBox">
+            <div>
+                <img class="postPicShow" src="/img/medic.png">
+            </div>
+                <div class="commentUsername">{{ App\Models\User::find($comment->user_id)->name }}</div>
+                <div style="margin-left: 5px;">{{ ($comment->description) }}</div>
+                @if ($comment->user_id == Auth::id())
+                    <button type="submit" class="btn btn-outline-danger">Delete comment</button>
+                @endif
+        </div>
+    @endforeach
+
 @endsection

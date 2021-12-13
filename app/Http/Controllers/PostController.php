@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Post;
+use App\Models\Comment;
 
 class PostController extends Controller
 {
@@ -65,10 +66,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($post)
     {
-        $post = Post::findOrFail($id);// if exist or 404
-        return view('posts.show', ['post' => $post]);
+         $post = Post::findOrFail($post);// if exist or 404
+        //  return view('posts.show', ['post' => $post]);
+        $comments = Comment::where('post_id', '=', $post->id)->get();
+        return view('posts.show', ['post' => $post], ['comments' => $comments]);
     }
 
     /**

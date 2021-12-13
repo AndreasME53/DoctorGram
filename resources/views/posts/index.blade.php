@@ -8,7 +8,7 @@
 
 <link href="/css/styles.css" rel="stylesheet">
     @if (Auth::check())
-    <form action="{{ url('addpost') }}" method="POST">
+    <form action="{{ url('store') }}" method="POST">
         @csrf
         <div class="addPost">
             <h5>Create a Case</h5>
