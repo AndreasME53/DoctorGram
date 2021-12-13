@@ -13,7 +13,7 @@ class Comment extends Model
         return $this->belongsTo(Post::class);             //php to connect one to many
     }
 
-    public function doctors(){
-        return $this->belongsTo(Doctor::class);             //php to connect one to many
+    public function users(){
+        return $this->belongsTo(User::class);             //php to connect one to many
     }
 }

@@ -25,8 +25,7 @@ class PatientTableSeeder extends Seeder
         $p1->insurenceNumber = "6606192211041";
         $p1->save();
          // connected to multiple doctors for different examinations
-        $p1->doctors()->attach(1);
-        $p1->doctors()->attach(4);
+
 
         $p2 = new Patient;
         $p2->firstName = "Richard";
@@ -37,10 +36,6 @@ class PatientTableSeeder extends Seeder
         $p2->insurenceNumber = "63824362186329";
         $p2->save();
         // connected to multiple doctors for different examinations
-        $p2->doctors()->attach(2);
-        $p2->doctors()->attach(6);
-        $p2->doctors()->attach(3);
-
 
         // fatory adding randomn patients
         $patient = Patient::factory()->count(10)->create();

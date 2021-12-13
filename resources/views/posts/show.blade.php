@@ -1,4 +1,4 @@
-@extends('layouts.app1')
+@extends('layouts.app')
 
 
 @section('title')
@@ -9,11 +9,11 @@
 
 @section('content')
 
-
-<div class="card shadow-lxx">
+<link href="/css/styles.css" rel="stylesheet">
+<div class="card shadow-ld">
     <div>
         
-        <img class="postLogoPic" src="/img/medic.png">
+        <img class="postPicShow" src="/img/medic.png">
     </div>
     <div class="container"> 
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">

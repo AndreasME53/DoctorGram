@@ -24,29 +24,33 @@ Route::get('/', function () {
 });
 
 //homepage
-Route::get('home', [PostController::class, 'index'])
+Route::get('/home', [PostController::class, 'index'])
     ->name('posts.index');
 
 //view post
-Route::get('home/case/{id}', [PostController::class, 'show'])
+Route::get('/home/case/{id}', [PostController::class, 'show'])
     ->name('post.show');
 
 //edit, create and send forms/posts
-Route::get('post-form', [PostController::class, 'create'])
+Route::get('/post/form', [PostController::class, 'create'])
     ->name('posts.create');
-Route::post('store-form', [PostController::class, 'store']);
+Route::post('/store', [PostController::class, 'store'])
+    ->name('posts.store');
 
 
 //view doctor
-Route::get('doctors/{id}', [DoctorController::class, 'show'])
+Route::get('/doctors/{id}', [DoctorController::class, 'show'])
     ->name('doctor.show');
 
 //view patient
-Route::get('patients/{id}', [PatentController::class, 'show'])
+Route::get('/patients/{id}', [PatentController::class, 'show'])
     ->name('patients.show');
 
 
 //edit, register and add form doctor
+Route::get('doctor/register', [DoctorController::class, 'create'])
+    ->name('doctors.create');
+Route::post('store', [DoctorController::class, 'store'])->name('doctors.store');
 //Route::get('doctors/{id}', [DoctorController::class, 'edit'])
 
 //edit, create and add form patient
@@ -59,7 +63,7 @@ Route::post('store-form', [PatentController::class, 'store']);
 
 
 Route::get('/dashboard', function () {
-    return redirect('post-form');
+    return redirect('home');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

@@ -42,8 +42,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function doctors(){
-        return $this->hasOne(Doctor::class);             //php to connect many to many
+    public function patients(){
+        return $this->belongsToMany(Patient::class);         // php connect many to many
+    }
+
+    public function posts(){
+        return $this->hasMany(Post::class);             //php to connect one to many
+    }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);             //php to connect one to many
     }
 
 }

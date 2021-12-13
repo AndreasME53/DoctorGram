@@ -24,9 +24,9 @@ class CreateCommentsTable extends Migration
             $table->foreign('post_id')->references('id')->on('posts')
             ->onDelete('cascade')->ouUpdate('cascade'); // sql connecting many to many
 
-            $table->bigInteger('doctor_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
 
-            $table->foreign('doctor_id')->references('id')->on('doctors')
+            $table->foreign('user_id')->references('id')->on('users')
             ->onDelete('cascade')->ouUpdate('cascade'); // sql connecting many to many
 
         });

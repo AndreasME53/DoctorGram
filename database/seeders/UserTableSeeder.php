@@ -1,11 +1,10 @@
 <?php
 
 namespace Database\Seeders;
-
-use App\Models\;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class DoctorPatientTableSeeder extends Seeder
+class UserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +13,6 @@ class DoctorPatientTableSeeder extends Seeder
      */
     public function run()
     {
-        $doctor = Doctor::factory()->count(10)->create();
-
+        $users = User::factory()->count(10)->create();
     }
 }

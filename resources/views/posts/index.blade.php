@@ -1,4 +1,4 @@
-@extends('layouts.app1')
+@extends('layouts.app')
 
 @section('title')
         Dr. '{{$user ?? 'login in user'}}'
@@ -9,9 +9,9 @@
 <link href="/css/styles.css" rel="stylesheet">
     @if (Auth::check())
     <div class="addPost">
-        <h5>Send a post down below</h5>
-        <input class="form-control" type="text" placeholder="Default input">
-        <input type="button" id="sendBtn" placeholder="Add Post">
+        <div class="card-header nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <h5>Below are the posts</h5>
+        </div>
     </div>
     @else
     <div class="card-header nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
@@ -23,9 +23,8 @@
 @foreach ($posts as $post)
 
 <div class="card shodow-ld">
-    <div>
-        
-        <img class="postLogoPic" src="/img/medic.png">
+    <div>        
+        <img class="postPicIndex" src="/img/medic.png">
     </div>
     <div class="postUsername:"><h3>
         Dr.{{ App\Models\Doctor::find($post->doctor_id)->lastName }} {{ App\Models\Doctor::find($post->doctor_id)->firstName }} </h3>

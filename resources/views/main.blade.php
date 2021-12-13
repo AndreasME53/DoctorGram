@@ -2,12 +2,12 @@
 
 
 @section('title')
-        Dr. '{{$user ?? 'login in user'}}'
+        User '{{$user ?? 'login in user'}}'
 @endsection
 
 
 @section('heading')
-Selected post - Dr. {{$doctor}}
+Selected post - User {{$doctor}}
 @endsection
 
 

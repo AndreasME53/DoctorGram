@@ -25,9 +25,9 @@ class DoctorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($user)
     {
-        //
+        return view('doctors.create', ['user' => $user]);
     }
 
     /**
@@ -39,6 +39,21 @@ class DoctorController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required|max:255',
+            'photo' => 'nullable|image',
+        ]
+    );
+
+
+        $post = new Post;
+        $post->title = $validatedData['title'];
+        $post->description = $validatedData['description'];
+        $post->photo =$validatedData['photo'];
+        $post->doctor_id = 9; 
+        $post->save();
+        return redirect('post/form')->with('status', 'your case has been published');
 
     }
 

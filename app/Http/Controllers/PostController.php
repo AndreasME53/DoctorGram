@@ -45,18 +45,18 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'description' => 'required|max:255',
-            'photo' => 'nullable|binary',
+            'photo' => 'nullable|image',
         ]
     );
 
 
         $post = new Post;
-        $post->title = $request-> $validatedData['title'];
-        $post->description = $request-> $validatedData['description'];
-        $post->photo = $request->$validatedData['photo'];
-        $a->doctor_id = Auth::id(); 
+        $post->title = $validatedData['title'];
+        $post->description = $validatedData['description'];
+        $post->photo =$validatedData['photo'];
+        $post->doctor_id = 9; 
         $post->save();
-        return redirect('posts.create')->with('status', 'your case has been published');
+        return redirect('post/form')->with('status', 'your case has been published');
     }
 
     /**

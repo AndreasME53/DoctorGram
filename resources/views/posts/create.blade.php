@@ -1,4 +1,4 @@
-@extends('layouts.app1')
+@extends('layouts.app')
 
 @section('content')
 
@@ -27,21 +27,21 @@
     <div class="card-body">
 
 
-      <form name="post-form" id="post-form" method="POST" action="{{route('posts.create')}}">
+      <form name="post-form" id="post-form" method="POST" action="{{url('posts.store')}}">
        @csrf
 
         <div class="form-group">
           <label for="exampleInputEmail1">Title</label>
-          <input type="text" id="title" name="title" class="form-control" required="" placeholder="Title">
+          <input type="text" id="title" name="title" class="form-control" required="" placeholder="Title" value="{{ old('name')}}" >
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Description</label>
-          <textarea class="form-control" style="height:150px" name="description" required="" placeholder="Description"></textarea>
+          <textarea class="form-control" style="height:150px" name="description" required="" placeholder="Description" value="{{ old('description')}}"></textarea>
         </div>
         <div class="form-group">
-          <label for="exampleInputEmail1">You may add an image</label>
+          <label for="exampleInputEmail1">You may add an image: jpeg,png,jpg,gif,svg</label>
           <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile">
+            <input type="file" class="custom-file-input" id="customFile" name="photo">
             <label class="custom-file-label" for="customFile">Choose image</label>
           </div>
         </div>

@@ -9,8 +9,8 @@ class Post extends Model
 {
     use HasFactory;
 
-    public function doctors(){
-        return $this->belongsTo(Doctor::class);             //php to connect one to many
+    public function users(){
+        return $this->belongsTo(User::class);             //php to connect one to many
     }
 
     public function comments(){

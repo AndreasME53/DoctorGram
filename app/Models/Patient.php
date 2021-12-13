@@ -9,8 +9,8 @@ class Patient extends Model
 {
     use HasFactory;
 
-    public function doctors(){
-        return $this->belongsToMany(Doctor::class);             //php to connect many to many
+    public function users(){
+        return $this->belongsToMany(User::class);             //php to connect many to many
     }
 /* for later if time
     public function posts(){

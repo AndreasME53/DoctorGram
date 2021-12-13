@@ -20,9 +20,9 @@ class CreatePostsTable extends Migration
             $table->binary('photo')->nullable();
             $table->timestamps();
 
-            $table->bigInteger('doctor_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
 
-            $table->foreign('doctor_id')->references('id')->on('doctors')
+            $table->foreign('user_id')->references('id')->on('users')
             ->onDelete('cascade')->ouUpdate('cascade'); // sql connecting many to many
 //for later if time
          //   $table->bigInteger('patient_id')->unsigned();
