@@ -26,24 +26,34 @@
         </ul>
     </div>
     </div>
+    <div class = "addPost card-body card shadow-ld">
     <div class="postDate">{{ $post->created_at }}</div>
-    <div><h3>{{$post->title }}</h3></div>
-    
+    <div><h2>{{$post->title }}</h2></div>
+    <hr>
+    <p style="margin-left: 5px;">{{ $post->description }}</p>
+    <div class="text-center w-40 mb-8 shadow-lx ">
+        <img src="{{ asset('images/' . $post->image_path)}}" alt="">
+    </div>
     @if ($post->photo)
-
+    <div class = "m-auto">
+        <div class="text-center">
+            <img src="{{ asset('images/' . $post->image_path)}}" class="w-4 h-30 mb-8 shadow-sm" alt="">
+        </div>
+    </div>
+</div>
     @else
 
     @endif
 
-    <p style="margin-left: 5px;">{{ $post->description }}</p>
+    <hr>
+    <hr>
     <div >
         <div>
             <form action="/new/{{ $post->id }}/comment" method="POST">
                 @csrf
-                <label for="body">Enter your comment</label>
+                <label for="exampleInputEmail1">Enter a comment</label>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Description:</label>
-                    <textarea class="form-control" style="height:100px" name="description" required="" placeholder="Description" value="{{ old('description')}}"></textarea>
+                    <textarea class="form-control" style="height:50px" name="description" required="" placeholder="Description" value="{{ old('description')}}"></textarea>
                   </div>
                 <button type="submit" class="btn btn-sm btn-outline-primary">Add comment</button>
             </form>

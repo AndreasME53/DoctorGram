@@ -46,16 +46,19 @@ class PostController extends Controller
         //
         $validatedData = $request->validate([
             'title' => 'required|max:255',
-            'description' => 'required|max:255',
-            'photo' => 'nullable|image',
+            'description' => 'required',
+            'image' => 'nullable|mimes:jpg,png,jpeg|max:5048'
         ]
     );
 
+        $newImageName = time() . '-' . $request->name . '.' . $request->image->extension();
+        
+        $request->image->move(public_path('images'), $newImageName);
 
         $post = new Post;
         $post->title = $validatedData['title'];
         $post->description = $validatedData['description'];
-        $post->photo =$validatedData['photo'] ;
+        $post->image_path =$newImageName;
         $post->user_id = Auth::id(); 
         $post->save();
         return redirect('home');

@@ -44,10 +44,9 @@
                 <textarea class="form-control" style="height:50px" name="description" required="" placeholder="Description" value="{{ old('description')}}"></textarea>
               </div>
               <div class="form-group">
-                <label for="exampleInputEmail1">You may add an image: jpeg,png,jpg,gif,svg</label>
+                <label for="exampleInputEmail1">You may add an image: jpeg,png,jpg</label>
                 <div >
                   <input type="file" name="image">
-                  <label class="custom-file-label" for="customFile">Choose image</label>
                 </div>
               </div>
             <button type="submit" class="btn btn-primary btn-md">Send</button>

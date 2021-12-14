@@ -9,6 +9,8 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title', 'description', 'image_path' ];
+
     public function users(){
         return $this->belongsTo(User::class);             //php to connect one to many
     }
