@@ -4,31 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Doctor;
+use App\Models\User;
+use App\Models\Patient;
+use App\Models\UserDetail;
 
 class DoctorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-        $doctors = Doctor::all();
-        return view('doctors.index', ['doctors' => $doctors]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create($user)
-    {
-        return view('doctors.create', ['user' => $user]);
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -38,22 +19,6 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $validatedData = $request->validate([
-            'title' => 'required|max:255',
-            'description' => 'required|max:255',
-            'photo' => 'nullable|image',
-        ]
-    );
-
-
-        $post = new Post;
-        $post->title = $validatedData['title'];
-        $post->description = $validatedData['description'];
-        $post->photo =$validatedData['photo'];
-        $post->doctor_id = 9; 
-        $post->save();
-        return redirect('post/form')->with('status', 'your case has been published');
 
     }
 
@@ -66,9 +31,12 @@ class DoctorController extends Controller
     public function show($id)
     {
         //
-        $doctor =  Doctor::findOrFail($id);// if exist or 404
-        //dump($doctor);   for debugging
-        return view('doctors.show', ['doctor' => $doctor]);
+        $doctor =  User::findOrFail($id);// if exist or 404
+        $patients = User::find($id)->patients;
+        $userdetail = User::find($id)->userdetail;
+        dump($userdetail);   //for debugging
+        return view('users.show', ['doctor' => $doctor], ['patients' => $patients], ['details' => $userdetail]);
+
     }
 
     /**
@@ -104,4 +72,18 @@ class DoctorController extends Controller
     {
         //
     }
+
+
+    // To get all patients of a user
+    public function getPatients($user_id)
+    {
+        return User::find($user_id)->patients;
+    }
+
+    // To get all users by patient
+    public function getUsers($patient_id)
+    {
+        return Patient::find($patient_id)->users;
+    }
+
 }

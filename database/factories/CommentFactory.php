@@ -15,7 +15,7 @@ class CommentFactory extends Factory
     {
         return [
             'description' => $this->faker->realText($maxNbChars = 200, $indexSize = 2),
-            'post_id' => $this->faker->numberBetween($min = 1, $max = 100), // need to find a better way for this 
+            'post_id' => $this->faker->numberBetween($min = 1, $max = 10), // need to find a better way for this 
             'user_id' => $this->faker->numberBetween($min = 1, $max = 10), // need to find a better way for this 
         ];
     }

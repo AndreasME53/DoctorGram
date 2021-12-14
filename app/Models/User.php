@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Patient;
 
 class User extends Authenticatable
 {
@@ -43,7 +44,7 @@ class User extends Authenticatable
     ];
 
     public function patients(){
-        return $this->belongsToMany(Patient::class);         // php connect many to many
+        return $this->belongsToMany(Patient::class, 'user_patient');         // php connect many to many
     }
 
     public function posts(){
@@ -52,6 +53,10 @@ class User extends Authenticatable
 
     public function comments(){
         return $this->hasMany(Comment::class);             //php to connect one to many
+    }
+
+    public function userDetail(){
+        return $this->hasOne(UserDetail::class);             //php to connect one to one
     }
 
 }

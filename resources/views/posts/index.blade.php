@@ -1,21 +1,59 @@
 @extends('layouts.app')
 
 @section('title')
-        HomePage
+        - HomePage
 @endsection
 
 @section('content')
 
 <link href="/css/styles.css" rel="stylesheet">
     @if (Auth::check())
-    <form action="{{ url('store') }}" method="POST">
+<div class="container " >
+    <div class="addPost card-body">
+    
+        @if(session('status'))
+          <div class="alert alert-success">
+              {{ session('status') }}
+          </div>
+        @endif
+        <div class="card">
+          <div class="card-header text-center font-weight-bold">
+            Create a Case
+          </div>
+      
+          @if ($errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+      @endif
+
+
+    <form action="{{ url('/new/case') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <div class="addPost">
-            <h5>Create a Case</h5>
-            <textarea class="form-control" name="body" rows="3" required></textarea>
-            <button type="submit" class="btn btn-primary btn-lg">Send</button>
-        </div>
-    </form>
+        <div class="form-group">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Title</label>
+                <input type="text" id="title" name="title" class="form-control" required="" placeholder="Title" value="{{ old('name')}}" >
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Description</label>
+                <textarea class="form-control" style="height:50px" name="description" required="" placeholder="Description" value="{{ old('description')}}"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">You may add an image: jpeg,png,jpg,gif,svg</label>
+                <div >
+                  <input type="file" name="image">
+                  <label class="custom-file-label" for="customFile">Choose image</label>
+                </div>
+              </div>
+            <button type="submit" class="btn btn-primary btn-md">Send</button>
+            </div>
+            
+    </form></div><hr><hr>
     @else
     <div class="addPost">
         <h5>Log in or register to be able to send posts</h5>
@@ -43,7 +81,15 @@
   <div class="d-flex justify-content-between align-items-center">
     <div class="btn-group">
       <a class="btn btn-sm btn-outline-primary" href="/case/{{$post->id}}" role="button">View</a>
+      @if (Auth::id() == App\Models\User::find($post->user_id)->id)
       <a class="btn btn-sm btn-outline-secondary" href="#" role="button">Edit</a>
+
+      <form method="POST" href="/case/delete/{{$post->id}}">
+        @csrf
+        @method('DELETE')
+          <a type="submit" class="btn btn-sm btn-outline-danger"  role="button">Delete Post</a>
+      </form>@endif 
+
     </div>
     <small class="text-muted">{{ $post->created_at }}</small>
   </div>

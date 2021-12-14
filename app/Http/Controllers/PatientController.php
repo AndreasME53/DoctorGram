@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -46,6 +46,8 @@ class PatientController extends Controller
     public function show($id)
     {
         //
+        $patient =  Patient::findOrFail($id);// if exist or 404
+        return view('patients.show', ['patient' => $patient]);
     }
 
     /**

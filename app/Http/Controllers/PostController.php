@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Post;
+use Auth;
 use App\Models\Comment;
 
 class PostController extends Controller
@@ -18,7 +19,7 @@ class PostController extends Controller
     public function index()
     {
         //return
-        $posts = Post::all();
+        $posts = Post::latest()->get();
         return view('posts.index', ['posts' => $posts]);
 
     }
@@ -54,10 +55,10 @@ class PostController extends Controller
         $post = new Post;
         $post->title = $validatedData['title'];
         $post->description = $validatedData['description'];
-        $post->photo =$validatedData['photo'];
-        $post->doctor_id = 9; 
+        $post->photo =$validatedData['photo'] ;
+        $post->user_id = Auth::id(); 
         $post->save();
-        return redirect('post/form')->with('status', 'your case has been published');
+        return redirect('home');
     }
 
     /**
@@ -110,7 +111,7 @@ class PostController extends Controller
         $post->photo = $request->$validatedData['photo'];
         $a->doctor_id = $id; 
         $post->save();
-        return redirect('posts.create')->with('status', 'your case has been published');
+        return redirect('home')->with('status', 'your case has been published');
     }
 
     /**
@@ -121,6 +122,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $result=$post->delete();
+        return redirect('home')->with('status', 'your post has been removed');
     }
 }

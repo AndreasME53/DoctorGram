@@ -1,10 +1,10 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\Post;
+use App\Models\UserDetail;
 use Illuminate\Database\Seeder;
 
-class PostTableSeeder extends Seeder
+class UserDetailTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +13,6 @@ class PostTableSeeder extends Seeder
      */
     public function run()
     {
-        $post = Post::factory()->count(10)->create();
+        $users = UserDetail::factory()->count(10)->create();
     }
 }

@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Patient;
-use App\Models\Doctor;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class PatientTableSeeder extends Seeder
@@ -15,7 +15,18 @@ class PatientTableSeeder extends Seeder
      */
     public function run()
     {
-        // an example of a patient's data entry
+        
+        $patientmain = Patient::factory()->count(50)->create();
+
+        $users = User::all();
+
+        Patient::all()->each(function ($paitent) use ($users) {
+            $paitent->users()->attach($users->random(rand(1, 3))->pluck('id')->toArray());
+        } );
+        
+    }
+}
+/* // an example of a patient's data entry
         $p1 = new Patient;
         $p1->firstName = "James";
         $p1->lastName = "May";
@@ -26,7 +37,8 @@ class PatientTableSeeder extends Seeder
         $p1->save();
          // connected to multiple doctors for different examinations
 
-
+     //    $p1->doctors()->attach(1);
+     //    $p1->doctors()->attach(4);
         $p2 = new Patient;
         $p2->firstName = "Richard";
         $p2->lastName = "Hammond";
@@ -38,16 +50,9 @@ class PatientTableSeeder extends Seeder
         // connected to multiple doctors for different examinations
 
         // fatory adding randomn patients
-        $patient = Patient::factory()->count(10)->create();
-        
-        // Get all the roles attaching up to 3 random roles to each user
-//$patients = Patient::all();
+     //   $p2->doctors()->attach(2);
+    //    $p2->doctors()->attach(6);
+    //    $p2->doctors()->attach(3);
+        // fatory adding randomn patien*/
 
-// Populate the pivot table
-//Doctor::all()->each(function ($doctor) use ($patients) { 
-  //  $doctor->patients()->attach(
- //       $patients->random(rand(1, 10))->pluck('id')->toArray()
- //   ); 
-//});
-    }
-}
+

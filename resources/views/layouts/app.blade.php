@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <title>DoctorGram - @yield('title')</title>
+    <title>DoctorGram @yield('title')</title>
   </head>
   <body>
     
@@ -17,15 +17,16 @@
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
             <a href="/" class="col d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
                 <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-                <span class="fs-4">DoctorGram</span>
+                <span class="fs-4">Swansea Hospital DoctorGram</span>
               </a>
     
           
           @if (Auth::check())
 
           <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li class="nav-item"><a href="{{ url('/home') }}" class="nav-link active" aria-current="page">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">account details</a></li>
+            <li class="nav-item"><a href="{{ url('/home') }}" class="nav-link active" aria-current="page">Home</a></li><p hidden>{{$u_id = Auth::id()}}</p>
+          
+            <li class="nav-item"><a href="/doctors/{{$u_id}} " class="nav-link">account details</a></li>
           </ul>
 
           <div class="col-md-3 text-end">
