@@ -80,11 +80,16 @@
   <div class="d-flex justify-content-between align-items-center">
     <div class="btn-group">
       <a class="btn btn-sm btn-outline-primary" href="/case/{{$post->id}}" role="button">View</a>
+
+
       @if (Auth::id() == App\Models\User::find($post->user_id)->id)
 
-      <a class="btn btn-sm btn-outline-secondary" href="/case/{{$post->id}}/edit" role="button">Edit</a>
 
+ {{-- just need this to work--}}
+      <a class="btn btn-sm btn-outline-secondary" href="/case/{{$post->id}}/edit" role="button">Edit</a>
+ {{-- just need this to work--}}
       
+ 
       
       @endif 
 

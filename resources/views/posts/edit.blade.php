@@ -34,6 +34,10 @@
 @endif
 
 
+ {{-- just need this to work--}}
+
+ 
+
 <form  method="POST"  action="/case/update/{{$post->id}}" enctype="multipart/form-data">
 @csrf
 @method('PUT')
@@ -78,6 +82,9 @@
     <a type="submit" class="btn btn-sm btn-outline-danger"  role="button">Delete Post</a>
 </form>
 
+
+ {{-- just need this to work--}}
+
 </div>
 
     <hr>
@@ -97,10 +104,6 @@
                 <div class="postDate text-end">{{ App\Models\User::find($comment->user_id)->created_at }}</div>
                 <hr>
                 <div style="margin-left: 5px;">{{ ($comment->description) }}</div>
-                @if ($comment->user_id == Auth::id())
-                    <button type="submit" class="btn btn-outline-secondary">Edit comment</button>
-                    <button type="submit" class="btn btn-outline-danger">Delete comment</button>
-                @endif
         </div>
     </div>
     @endforeach

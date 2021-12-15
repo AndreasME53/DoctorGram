@@ -76,8 +76,23 @@
                 <hr>
                 <div style="margin-left: 5px;">{{ ($comment->description) }}</div>
                 @if ($comment->user_id == Auth::id())
+
+
+                {{--  Just need to get this to work --}}
+
                     <button type="submit" class="btn btn-outline-secondary">Edit comment</button>
-                    <button type="submit" class="btn btn-outline-danger">Delete comment</button>
+                    <button type="submit" method="POST" onclick="event.preventDefault(); document.getElementById('delete-comment').submit();" class="btn btn-outline-danger">Delete comment</button>
+                    <form id="delete-comment" action="/comment/delete/{{ $comment->id }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                        
+                    </form>
+
+                     {{-- just need this to work--}}
+
+
+
+                    
                 @endif
         </div>
     </div>

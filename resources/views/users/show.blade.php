@@ -20,6 +20,8 @@
 
 
     @if (Auth::id() == $doctor->id)
+
+
     <div class="container " >
         <div class="addPost card-body">
         
@@ -42,7 +44,9 @@
                   </ul>
               </div>
           @endif
-    
+
+
+          {{-- just need this to work--}}
     
         <form action="{{ url('/new/case') }}" method="POST">
             @csrf
@@ -73,6 +77,9 @@
         </ul>
 
             </form></div>
+
+                {{-- just need this to work--}}
+
         @else
 
         <ul>

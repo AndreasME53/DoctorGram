@@ -47,7 +47,7 @@ Route::post('store', [DoctorController::class, 'store']);
 //Route::get('doctors/{id}', [DoctorController::class, 'edit'])
 
 Route::delete('/case/{id}/delete', [PostController::class, 'destroy'])->name('posts.destroy');
-Route::delete('/comment/{id}', [CommentController::class, 'destroy'])->name('comments.destroy');
+Route::delete('/comment/delete/{id}', [CommentsController::class, 'destroy']);
 
  Route::get('/dashboard', function () {
      return redirect('home');

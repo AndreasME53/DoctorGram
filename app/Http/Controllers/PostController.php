@@ -84,7 +84,7 @@ class PostController extends Controller
     {
          $post = Post::findOrFail($post);// if exist or 404
         //  return view('posts.show', ['post' => $post]);
-        $comments = Comment::where('post_id', '=', $post->id)->get();
+        $comments = Comment::where('post_id', '=', $post->id)->latest()->get();
         return view('posts.show', ['post' => $post], ['comments' => $comments]);
     }
 
