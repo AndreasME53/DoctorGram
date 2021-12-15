@@ -33,9 +33,7 @@ class DoctorController extends Controller
         //
         $doctor =  User::findOrFail($id);// if exist or 404
         $patients = User::find($id)->patients;
-        $userdetail = User::find($id)->userdetail;
-        dump($userdetail);   //for debugging
-        return view('users.show', ['doctor' => $doctor], ['patients' => $patients], ['details' => $userdetail]);
+        return view('users.show', ['doctor' => $doctor], ['patients' => $patients]);
 
     }
 
