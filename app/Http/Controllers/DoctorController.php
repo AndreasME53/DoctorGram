@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Patient;
 use App\Models\UserDetail;
 
+use Auth;
+
 class DoctorController extends Controller
 {
 
@@ -57,7 +59,37 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        {
+            $validatedData = $request->validate([
+                'phoneNumber' => 'required|max:255',
+                'field' => 'required|max:255',
+            ]
+        );
+    
+    
+        $doctor = UserDetail::find($id);
+
+        if($doctor==null) {
+            $doctor = new UserDetail;
+            //$comment->post_id = $post->id;
+            $doctor->user_id = Auth::id();
+            $doctor->phoneNumber = $validatedData['phoneNumber'];
+            $doctor->field = $validatedData['field'];
+            $doctor->save();
+        } else {
+        //$comment->post_id = $post->id;
+        //$doctor->user_id = Auth::id();
+        $doctor->phoneNumber = $validatedData['phoneNumber'];
+        $doctor->field = $validatedData['field'];
+        $doctor->update();
+    
+        }
+
+
+       
+        return redirect('/doctors/'.$doctor->id);
+
+        }
     }
 
     /**

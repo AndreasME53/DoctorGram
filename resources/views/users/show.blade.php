@@ -47,17 +47,20 @@
 
 
           {{-- just need this to work--}}
-    
-        <form action="{{ url('/new/case') }}" method="POST">
-            @csrf
+
         
 
         <ul>
             <li>Name: {{$doctor->name}}</li>
             <li>Contact Email: {{$doctor->email ?? 'Unknown'}}</li>
-            
-            <li>Contact Number:</li> <input type="text" name="phoneNumber" class="form-control" required="" value="{{App\Models\UserDetail::find($doctor->id)->phoneNumber ?? 'Unknown - Please enter your contact number'}}" >
-            <li>Specialized in :</li><input type="text" name="field" class="form-control" required="" value="{{App\Models\UserDetail::find($doctor->id)->field ?? 'Unknown - Please enter your field'}}" >
+
+            <form id="submit-doc" action="/doctors/{{ $doctor->id }}/update" method="POST">
+                @csrf
+                @method('PUT')
+            <li>Contact Number:</li> <input type="text" name="phoneNumber" class="form-control" required=""  >{{App\Models\UserDetail::find($doctor->id)->phoneNumber ?? 'Unknown - Please enter your contact number'}}
+            <li>Specialized in :</li><input type="text" name="field" class="form-control" required=""  >
+            </form>
+
 
             <li>List of Assigned Patents: 
                 <ol>
@@ -73,10 +76,9 @@
                 
     
             </li>
-            
+            <button onclick="event.preventDefault(); document.getElementById('submit-doc').submit();" class="btn btn-sm btn-outline-primary">Update records</button>
         </ul>
-
-            </form></div>
+</div>
 
                 {{-- just need this to work--}}
 

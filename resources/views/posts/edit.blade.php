@@ -38,7 +38,7 @@
 
  
 
-<form  method="POST"  action="/case/update/{{$post->id}}" enctype="multipart/form-data">
+<form action="/case/{{$post->id}}/update" enctype="multipart/form-data" method="POST">
 @csrf
 @method('PUT')
 <div class="form-group">
@@ -64,22 +64,22 @@
           <input type="file" id="image" name="image" value={{$post->image_path}}>
         </div>
       </div>
-    <button type="submit" class="btn btn-primary btn-md">Send</button>
+    <button type="submit" class="btn btn-primary btn-md">Save</button>
     </div>
     
 </form>
 
 
-<form method="POST" action="{{route('posts.destroy', $post->id)}}">
+{{-- <form method="POST" action="{{route('posts.destroy', $post->id)}}">
   @csrf
   @method('DELETE')
     <a type="submit" class="btn btn-sm btn-outline-danger"  role="button">Delete Post</a>
-</form>
-
-<form method="POST" action="/case/{{$post->id}}/delete">
+</form> --}}
+<button class="btn btn-sm btn-outline-danger" onclick="event.preventDefault(); document.getElementById('deletepost').submit();">Delete</button>
+<form id="deletepost" method="POST" action="/case/{{$post->id}}/delete">
   @csrf
   @method('DELETE')
-    <a type="submit" class="btn btn-sm btn-outline-danger"  role="button">Delete Post</a>
+    {{-- <a type="submit" class="btn btn-sm btn-outline-danger"  role="button">Delete Post</a> --}}
 </form>
 
 

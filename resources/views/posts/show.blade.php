@@ -32,7 +32,7 @@
     <hr>
     <p style="margin-left: 5px;">{{ $post->description }}</p>
     <div >
-        <img  src="{{ asset('images/' . $post->image_path)}}" alt="">
+        <img src="{{ asset('images/' . $post->image_path)}}" alt="">
     </div>
     @if ($post->photo)
     <div class = "m-auto">
@@ -90,7 +90,8 @@
 
                 {{--  Just need to get this to work --}}
 
-                    <button type="submit" class="btn btn-outline-secondary">Edit comment</button>
+                    <button onclick="event.preventDefault(); document.getElementById('edit-comment').submit();" type="submit" class="btn btn-outline-secondary">Edit comment</button>
+                    <form id="edit-comment" action="/comment/{{ $comment->id }}/edit" method="GET" style="display: none;"></form>
                     <button type="submit" method="POST" onclick="event.preventDefault(); document.getElementById('delete-comment').submit();" class="btn btn-outline-danger">Delete comment</button>
                     <form id="delete-comment" action="/comment/delete/{{ $comment->id }}" method="POST" style="display: none;">
                         {{ csrf_field() }}

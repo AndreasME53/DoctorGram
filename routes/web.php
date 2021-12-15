@@ -28,7 +28,10 @@ Route::get('/home', [PostController::class, 'index']);
 Route::get('/case/{id}', [PostController::class, 'show']);
 
 Route::get('/case/{id}/edit', [PostController::class, 'edit']);
-Route::post('/case/{id}/update', [PostController::class, 'update'])->name('posts.update');
+
+Route::put('/case/{id}/update', [PostController::class, 'update']);
+
+Route::put('/comment/{id}/update', [CommentController::class, 'update']);
 
 Route::post('/new/case', [PostController::class, 'store']);
 
@@ -37,17 +40,22 @@ Route::post('/new/{post}/comment', [CommentController::class, 'store']);
 
 //view doctor
 Route::get('/doctors/{id}', [DoctorController::class, 'show']);
+Route::put('/doctors/{id}/update', [DoctorController::class, 'update']);
 
 //view patient
 Route::get('/patients/{id}', [PatientController::class, 'show']);
 
 //edit, register and add form doctor
 Route::get('doctor/register', [DoctorController::class, 'create']);
+
+Route::get('comment/{id}/edit', [CommentController::class, 'edit']);
+
 Route::post('store', [DoctorController::class, 'store']);
 //Route::get('doctors/{id}', [DoctorController::class, 'edit'])
 
-Route::delete('/case/{id}/delete', [PostController::class, 'destroy'])->name('posts.destroy');
-Route::delete('/comment/delete/{id}', [CommentsController::class, 'destroy']);
+Route::delete('/case/{id}/delete', [PostController::class, 'destroy']);
+
+Route::delete('/comment/delete/{id}', [CommentController::class, 'destroy']);
 
  Route::get('/dashboard', function () {
      return redirect('home');

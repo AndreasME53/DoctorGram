@@ -124,7 +124,7 @@ class PostController extends Controller
             $post->description = $validatedData['description'];
             $post->image_path = '';
             $post->user_id = Auth::id(); 
-            $post->save();
+            $post->update();
             return redirect('home')->with('status', 'your case has been updated');
         
     } else{
@@ -137,7 +137,7 @@ class PostController extends Controller
         $post->description = $validatedData['description'];
         $post->image_path =$newImageName;
         $post->user_id = Auth::id(); 
-        $post->save();
+        $post->update();
         return redirect('home')->with('status', 'your case has been updated');
         }
     }

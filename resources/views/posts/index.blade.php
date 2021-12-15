@@ -81,16 +81,16 @@
     <div class="btn-group">
       <a class="btn btn-sm btn-outline-primary" href="/case/{{$post->id}}" role="button">View</a>
 
-
       @if (Auth::id() == App\Models\User::find($post->user_id)->id)
 
 
  {{-- just need this to work--}}
-      <a class="btn btn-sm btn-outline-secondary" href="/case/{{$post->id}}/edit" role="button">Edit</a>
+
+      
+      <a onclick="event.preventDefault(); document.getElementById('edit-post').submit();" class="btn btn-sm btn-outline-secondary" href="#" role="button">Edit</a>
  {{-- just need this to work--}}
-      
- 
-      
+
+      <form id="edit-post" action="/case/{{ $post->id }}/edit" method="GET" style="display: none;"></form>
       @endif 
 
     </div>

@@ -72,7 +72,11 @@ class CommentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comment = Comment::findOrFail($id);// if exist or 404
+
+        //  return view('posts.show', ['post' => $post]);
+        // $comments = Comment::where('post_id', '=', $post->id)->get();
+        return view('comments.edit', ['comment' => $comment]);
     }
 
     /**
@@ -84,7 +88,20 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'description' => 'required|max:255',
+        ]
+    );
+
+
+    $comment = Comment::find($id);
+
+    // $comment->post_id = $post->id;
+    // $comment->user_id = Auth::id();
+    $comment->description = $validatedData['description'];
+    $comment->update();
+
+    return redirect('/case/'.$comment->post_id);
     }
 
     /**
