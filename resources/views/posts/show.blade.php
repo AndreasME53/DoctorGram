@@ -48,7 +48,9 @@
     <hr>
     <hr>
     <div >
-        <div>
+        <div> 
+            @if (Auth::check())
+
             <form action="/new/{{ $post->id }}/comment" method="POST">
                 @csrf
                 <label for="exampleInputEmail1">Enter a comment</label>
@@ -59,8 +61,16 @@
             </form>
         </div>
         <div class="btn-group">
-          @if (Auth::id() == App\Models\User::find($post->user_id)->id)
-          <a class="btn btn-sm btn-outline-secondary" href="/case/{{$post->id}}/edit" role="button">Edit</a>@endif 
+             @if (Auth::id() == App\Models\User::find($post->user_id)->id)
+          <a class="btn btn-sm btn-outline-secondary" href="/case/{{$post->id}}/edit" role="button">Edit</a>
+                @endif
+          @else
+          
+          <div>
+            <label for="exampleInputEmail1">You cannot make a comment as you need to  <a href="{{ route('login') }}">Login</a> or <a href="{{ route('register') }}">Register<a></h4></label>
+          </div>
+          
+          @endif 
         </div>
       </div>
 </div>

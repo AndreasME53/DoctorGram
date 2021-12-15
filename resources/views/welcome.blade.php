@@ -6,7 +6,7 @@
 
     <div>
         <h4 class="display-2 text-center font-weight-bold">Welcome to DoctorGram!</h4>
-        <h4 class="text-center">DoctorGram is a website for doctors to post cases and get other doctors to assistance.</h4>
+        <h4 class="text-center">DoctorGram is a website for doctors at Swansea Hospital where they can post cases and get other doctor's assistance.</h4>
         @if (Auth::user())
         <h4 class="text-center">You are login :)</h4>
         @else
