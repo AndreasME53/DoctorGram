@@ -50,7 +50,16 @@ class PostController extends Controller
             'image' => 'nullable|mimes:jpg,png,jpeg|max:5048'
         ]
     );
-
+        if(is_null($request->image)){
+            $post = new Post;
+            $post->title = $validatedData['title'];
+            $post->description = $validatedData['description'];
+            $post->image_path = '';
+            $post->user_id = Auth::id(); 
+            $post->save();
+            return redirect('home')->with('status', 'your case has been published');
+        
+    } else{
         $newImageName = time() . '-' . $request->name . '.' . $request->image->extension();
         
         $request->image->move(public_path('images'), $newImageName);
@@ -61,7 +70,8 @@ class PostController extends Controller
         $post->image_path =$newImageName;
         $post->user_id = Auth::id(); 
         $post->save();
-        return redirect('home');
+        return redirect('home')->with('status', 'your case has been published');
+        }
     }
 
     /**
@@ -86,8 +96,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        
-        return view('posts.edit', compact('id'));
+        $post = Post::findOrFail($id);// if exist or 404
+        //  return view('posts.show', ['post' => $post]);
+        $comments = Comment::where('post_id', '=', $post->id)->get();
+        return view('posts.edit', ['post' => $post], ['comments' => $comments]);
     }
 
     /**
@@ -102,19 +114,32 @@ class PostController extends Controller
         //
         $validatedData = $request->validate([
             'title' => 'required|max:255',
-            'description' => 'required|max:255',
-            'photo' => 'nullable|binary',
+            'description' => 'required',
+            'image' => 'nullable|mimes:jpg,png,jpeg|max:5048'
         ]
     );
+        if(is_null($request->image)){
+            $post =  Post::findOrFail($id);
+            $post->title = $validatedData['title'];
+            $post->description = $validatedData['description'];
+            $post->image_path = '';
+            $post->user_id = Auth::id(); 
+            $post->save();
+            return redirect('home')->with('status', 'your case has been updated');
+        
+    } else{
+        $newImageName = time() . '-' . $request->name . '.' . $request->image->extension();
+        
+        $request->image->move(public_path('images'), $newImageName);
 
-
-        $post = new Post;
-        $post->title = $request-> $validatedData['title'];
-        $post->description = $request-> $validatedData['description'];
-        $post->photo = $request->$validatedData['photo'];
-        $a->doctor_id = $id; 
+        $post =  Post::findOrFail($id);
+        $post->title = $validatedData['title'];
+        $post->description = $validatedData['description'];
+        $post->image_path =$newImageName;
+        $post->user_id = Auth::id(); 
         $post->save();
-        return redirect('home')->with('status', 'your case has been published');
+        return redirect('home')->with('status', 'your case has been updated');
+        }
     }
 
     /**
@@ -125,8 +150,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
-        $result=$post->delete();
+        $post =  Post::findOrFail($id);
+        $post->delete();
         return redirect('home')->with('status', 'your post has been removed');
     }
 }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,11 +24,15 @@ Route::get('/', function () {
 
 Route::get('/home', [PostController::class, 'index']);
 
+
 Route::get('/case/{id}', [PostController::class, 'show']);
+
+Route::get('/case/{id}/edit', [PostController::class, 'edit']);
+Route::post('/case/{id}/update', [PostController::class, 'update'])->name('posts.update');
 
 Route::post('/new/case', [PostController::class, 'store']);
 
-Route::post('/new/{post}/comment', [CommentsController::class, 'store']);
+Route::post('/new/{post}/comment', [CommentController::class, 'store']);
 
 
 //view doctor
@@ -41,8 +46,8 @@ Route::get('doctor/register', [DoctorController::class, 'create']);
 Route::post('store', [DoctorController::class, 'store']);
 //Route::get('doctors/{id}', [DoctorController::class, 'edit'])
 
-Route::delete('/case/delete/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
-Route::delete('/comment/{id}', [CommentsController::class, 'destroy'])->name('comments.destroy');
+Route::delete('/case/{id}/delete', [PostController::class, 'destroy'])->name('posts.destroy');
+Route::delete('/comment/{id}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
  Route::get('/dashboard', function () {
      return redirect('home');

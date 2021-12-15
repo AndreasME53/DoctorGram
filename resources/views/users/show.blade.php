@@ -75,7 +75,8 @@
         <ul>
             <li>Name: {{$doctor->name}}</li>
             <li>Contact Number: {{App\Models\User::find($doctor->id)->phoneNumber ?? 'Unknown'}}</li>
-            <li>Specialized in : {{$details->field ?? 'Unknown'}}</li>
+            <li>Contact Email: {{$doctor->email ?? 'Unknown'}}</li>
+            <li>Specialized in : {{App\Models\User::find($doctor->id)->field  ?? 'Unknown'}}</li>
             <li>List of Assigned Patents: 
                 <ol>
                     @foreach ($patients as $patient) 

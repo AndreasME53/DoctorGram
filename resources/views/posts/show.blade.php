@@ -31,8 +31,8 @@
     <div><h2>{{$post->title }}</h2></div>
     <hr>
     <p style="margin-left: 5px;">{{ $post->description }}</p>
-    <div class="text-center w-40 mb-8 shadow-lx ">
-        <img src="{{ asset('images/' . $post->image_path)}}" alt="">
+    <div >
+        <img  src="{{ asset('images/' . $post->image_path)}}" alt="">
     </div>
     @if ($post->photo)
     <div class = "m-auto">
@@ -60,7 +60,7 @@
         </div>
         <div class="btn-group">
           @if (Auth::id() == App\Models\User::find($post->user_id)->id)
-          <a class="btn btn-sm btn-outline-secondary" href="#" role="button">Edit</a>@endif 
+          <a class="btn btn-sm btn-outline-secondary" href="/case/{{$post->id}}/edit" role="button">Edit</a>@endif 
         </div>
       </div>
 </div>

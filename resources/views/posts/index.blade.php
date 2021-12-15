@@ -81,13 +81,12 @@
     <div class="btn-group">
       <a class="btn btn-sm btn-outline-primary" href="/case/{{$post->id}}" role="button">View</a>
       @if (Auth::id() == App\Models\User::find($post->user_id)->id)
-      <a class="btn btn-sm btn-outline-secondary" href="#" role="button">Edit</a>
 
-      <form method="POST" href="/case/delete/{{$post->id}}">
-        @csrf
-        @method('DELETE')
-          <a type="submit" class="btn btn-sm btn-outline-danger"  role="button">Delete Post</a>
-      </form>@endif 
+      <a class="btn btn-sm btn-outline-secondary" href="/case/{{$post->id}}/edit" role="button">Edit</a>
+
+      
+      
+      @endif 
 
     </div>
     <small class="text-muted">{{ $post->created_at }}</small>
