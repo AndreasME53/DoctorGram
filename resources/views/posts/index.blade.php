@@ -32,11 +32,11 @@
             <div class="form-group">
                <div class="form-group">
                   <label for="exampleInputEmail1">Title</label>
-                  <input type="text" id="title" name="title" class="form-control" required="" placeholder="Title" value="{{ old('name')}}" >
+                  <input type="text" id="title" name="title" class="form-control" required="" value="{{ old('title')}}" >
                </div>
                <div class="form-group">
                   <label for="exampleInputEmail1">Description</label>
-                  <textarea class="form-control" style="height:50px" name="description" required="" placeholder="Description" value="{{ old('description')}}"></textarea>
+                  <textarea class="form-control" style="height:50px" name="description" required="" value="{{ old('description')}}"></textarea>
                </div>
                <div class="form-group">
                   <label for="exampleInputEmail1">You may add an image: jpeg,png,jpg</label>
@@ -55,14 +55,16 @@
          <h5>Log in or register to be able to send posts</h5>
       </div>
       @endif
+      <div class='card'>
       @foreach ($posts as $post)
+      <div class='card'>
       <div class="card shodow-ld">
          <div>        
             <img class="postPicIndex" src="/img/medic.png">
          </div>
          <div class="postUsername:">
             <h3>
-               Dr. {{ App\Models\User::find($post->user_id)->name }} 
+              Posted by: Dr. {{ App\Models\User::find($post->user_id)->name }} 
             </h3>
          </div>
          <div>
@@ -83,9 +85,13 @@
             @endif 
          </div>
          <small class="text-muted">{{ $post->created_at }}</small>
+      </div><div class ="col-sm">
+          <p></p>
       </div>
+      </div>
+      
       @endforeach
-   </div>
+   </div></div>
    
 </div>
 </div><div class="container col-md-6">

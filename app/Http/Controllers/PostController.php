@@ -59,18 +59,18 @@ class PostController extends Controller
             $post->save();
             return redirect('home')->with('status', 'your case has been published');
         
-    } else{
-        $newImageName = time() . '-' . $request->name . '.' . $request->image->extension();
+        } else{
+            $newImageName = time() . '-' . $request->name . '.' . $request->image->extension();
         
-        $request->image->move(public_path('images'), $newImageName);
+            $request->image->move(public_path('images'), $newImageName);
 
-        $post = new Post;
-        $post->title = $validatedData['title'];
-        $post->description = $validatedData['description'];
-        $post->image_path =$newImageName;
-        $post->user_id = Auth::id(); 
-        $post->save();
-        return redirect('home')->with('status', 'your case has been published');
+            $post = new Post;
+            $post->title = $validatedData['title'];
+            $post->description = $validatedData['description'];
+            $post->image_path =$newImageName;
+            $post->user_id = Auth::id(); 
+            $post->save();
+            return redirect('home')->with('status', 'your case has been published');
         }
     }
 
