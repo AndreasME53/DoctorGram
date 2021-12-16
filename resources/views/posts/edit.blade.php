@@ -51,21 +51,22 @@
         <textarea  type="text"  class="form-control" id="description" style="height:50px" name="description" required="">{{$post->description}}</textarea>
       </div>
       <div class="form-group">
-        <label for="exampleInputEmail1">You may change your image: jpeg,png,jpg</label>
+        <label for="exampleInputEmail1">Enter a new image: jpeg,png,jpg</label>
         <div >
-          
+          @if ($post->image_path != null)      
     <div class = "m-auto">
         <div class="text-center w-40 h-30 ">
             <img src="{{ asset('images/' . $post->image_path)}}" class="w-4 h-30 mb-8 shadow-sm" alt="">
         </div>
-    </div>
+    </div>@endif
 </div>
 
-          <input type="file" id="image" name="image" value={{$post->image_path}}>
+          <input type="file" id="image" name="image">
+          <input hidden type="file" id="same" name="same" value={{$post->image_path}}>
         </div>
       </div>
-    <button type="submit" class="btn btn-primary btn-md">Save</button>
-    </div>
+    <div class = " container text-left "><div class="col-1"> </div><hr><button type="submit" class="btn btn-outline-primary btn-md">SAVE YOUR EDIT</button></div>
+    
     
 </form>
 
@@ -75,7 +76,7 @@
   @method('DELETE')
     <a type="submit" class="btn btn-sm btn-outline-danger"  role="button">Delete Post</a>
 </form> --}}
-<button class="btn btn-sm btn-outline-danger" onclick="event.preventDefault(); document.getElementById('deletepost').submit();">Delete</button>
+<div class = " container text-right "><button class="btn btn-md btn-outline-danger" onclick="event.preventDefault(); document.getElementById('deletepost').submit();">DELETE YOUR POST</button></div></div>
 <form id="deletepost" method="POST" action="/case/{{$post->id}}/delete">
   @csrf
   @method('DELETE')

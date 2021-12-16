@@ -19,7 +19,7 @@ class PostController extends Controller
     public function index()
     {
         //return
-        $posts = Post::latest()->get();
+        $posts = Post::latest()->paginate(5);
         return view('posts.index', ['posts' => $posts]);
 
     }
@@ -84,7 +84,7 @@ class PostController extends Controller
     {
          $post = Post::findOrFail($post);// if exist or 404
         //  return view('posts.show', ['post' => $post]);
-        $comments = Comment::where('post_id', '=', $post->id)->latest()->get();
+        $comments = Comment::where('post_id', '=', $post->id)->latest()->paginate(3);
         return view('posts.show', ['post' => $post], ['comments' => $comments]);
     }
 

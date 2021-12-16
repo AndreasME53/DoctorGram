@@ -14,7 +14,7 @@
         <li class = "col"> <h1 class="text-center font-weight-bold"> Patient: {{$patient->lastName . " " . $patient->firstName}}</h1> </li>
 
         <li class="nav-item col-end text-end"><div class="d-flex justify-content-between align-items-center">
-            <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{ url()->previous() }}">Back to doctors information</a></button></li>
+            <a type="button" class="btn btn-sm btn-outline-secondary" href="{{ url()->previous() }}">Back to doctors' information</a></li>
     </ul>
 </div>
 

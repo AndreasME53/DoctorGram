@@ -18,6 +18,7 @@ class UserFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'password' => $this->faker->text(),
+            'is_admin' => $this->faker->numberBetween($min = 0, $max = 1), 
         ];
     }
 

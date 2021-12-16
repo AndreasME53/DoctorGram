@@ -8,8 +8,10 @@
 @endsection
 
 @section('content')
-
+<div class="card">
 <link href="/css/styles.css" rel="stylesheet">
+
+
 <div class="addPost card-body">
 <div class="card shadow-ld">
     <div>
@@ -28,19 +30,22 @@
     </div>
     <div class = "addPost card-body card shadow-ld">
     <div class="postDate">{{ $post->created_at }}</div>
-    <div><h2>{{$post->title }}</h2></div>
+    <div><h2>Heading: {{$post->title }}</h2></div>
+    @if (Auth::id() == App\Models\User::find($post->user_id)->id)
+    
+    <div class = " container text-right "><a class="btn btn-sm btn-outline-secondary" href="/case/{{$post->id}}/edit" role="button">Edit Your Post</a></div>
+                @endif
     <hr>
     <p style="margin-left: 5px;">{{ $post->description }}</p>
-    <div >
-        <img src="{{ asset('images/' . $post->image_path)}}" alt="">
-    </div>
-    @if ($post->photo)
+    @if ($post->image_path != null)
+
+   
     <div class = "m-auto">
         <div class="text-center">
             <img src="{{ asset('images/' . $post->image_path)}}" class="w-4 h-30 mb-8 shadow-sm" alt="">
         </div>
     </div>
-</div>
+
     @else
 
     @endif
@@ -61,9 +66,7 @@
             </form>
         </div>
         <div class="btn-group">
-             @if (Auth::id() == App\Models\User::find($post->user_id)->id)
-          <a class="btn btn-sm btn-outline-secondary" href="/case/{{$post->id}}/edit" role="button">Edit</a>
-                @endif
+             
           @else
           
           <div>
@@ -71,7 +74,7 @@
           </div>
           
           @endif 
-        </div>
+        </div></div>
       </div>
 </div>
 
@@ -108,5 +111,13 @@
         </div>
     </div>
     @endforeach
+    </div> 
+    <div class="container col">
+    <div class="paginator">
+        {{ $comments->links() }}
+    </div>  </div>
+
+
 </div>
+
 @endsection
