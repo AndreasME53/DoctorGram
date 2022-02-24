@@ -1,6 +1,7 @@
 # DoctorGram 
 ## DoctorGram's idea is a website for doctors at Swansea Hospital where they can post cases and get other doctor's assistance.
-A Web application project to demonstrate my skills with the Laravel framework which can be applyied to any other frameworks as well.
+A Web application project in the Laravel framework.
+The application is a Blog like programme for doctors and nurses to share and comment on patients reporst.
 
 
 ### Below is a video which fully demonstrates the working project:
